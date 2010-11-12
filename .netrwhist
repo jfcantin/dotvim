@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/jfcantin/.vim/bundle'
 let g:netrw_dirhist_2='/Users/jfcantin/.vim'
 let g:netrw_dirhist_3='/Users/jfcantin/.vim/bundle/vim-taglist/plugin'
+let g:netrw_dirhist_4='/Users/jfcantin'
+let g:netrw_dirhist_5='/Users/jfcantin/.vim'

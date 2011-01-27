@@ -3,6 +3,10 @@
 
 set nocompatible                  " Must come first because it changes other options.
 
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
 silent! call pathogen#runtime_append_all_bundles()
 
 syntax enable                     " Turn on syntax highlighting.
@@ -38,7 +42,12 @@ set visualbell                    " No beeping.
 
 set nobackup                      " Don't make a backup before overwriting a file.
 set nowritebackup                 " And again.
-set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
+set directory=$HOME/.vimswap// " Keep swap files in one location
+if has('win32') || has('win64')
+  silent execute '!mkdir $HOME/.vimswap -Force'
+else
+  silent execute '!mkdir -p $HOME/.vimswap'
+endif
 
 " UNCOMMENT TO USE
 set tabstop=2                    " Global tab width.

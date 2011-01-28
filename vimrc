@@ -3,9 +3,9 @@
 
 set nocompatible                  " Must come first because it changes other options.
 
-if has('win32') || has('win64')
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-endif
+"if has('win32') || has('win64')
+set runtimepath=~/.vim,$VIMRUNTIME,~/.vim/after
+"endif
 
 silent! call pathogen#runtime_append_all_bundles()
 
@@ -13,6 +13,9 @@ syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
 runtime macros/matchit.vim        " Load the matchit plugin.
+
+" Or use vividchalk
+colorscheme topfunky-light
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -40,13 +43,18 @@ set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
 
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " And again.
-set directory=$HOME/.vimswap// " Keep swap files in one location
+"set nobackup                      " Don't make a backup before overwriting a file.
+"set nowritebackup                 " And again.
+"set directory=$HOME/.vimswap// " Keep swap files in one location
 if has('win32') || has('win64')
-  silent execute '!mkdir $HOME/.vimswap -Force'
+  set directory=$TMP
+  if !has("gui_running")
+    colorscheme slate
+  endif
+elseif has("mac")
+  set directory=/tmp
 else
-  silent execute '!mkdir -p $HOME/.vimswap'
+  set directory=/tmp
 endif
 
 " UNCOMMENT TO USE
@@ -57,9 +65,6 @@ set expandtab                    " Use spaces instead of tabs
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
-
-" Or use vividchalk
-colorscheme topfunky-light
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -93,5 +98,10 @@ autocmd BufNewFile,BufRead *_spec.rb compiler rspec
 autocmd BufRead,BufNewFile *.py syntax on
 autocmd BufRead,BufNewFile *.py set ai
 "autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
+
+au BufNewFile,BufRead *.ps1 setf ps1
+au BufNewFile,BufRead *.config setf xml
+au BufNewFile,BufRead *.xaml setf xml
+
 set modeline
 

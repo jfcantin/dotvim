@@ -10,6 +10,8 @@ set smarttab
 set shiftwidth=2
 set autoindent
 set expandtab
+set hlsearch
+set incsearch
 syntax on
 
 colorscheme vividchalk
@@ -20,6 +22,3 @@ set guifont=Menlo:h13.00
 if has("autocmd")
   filetype plugin indent on
 endif 
-
-"let VIMPRESS = [{'username':'chrisn', 'blog_url':'http://lucisferre.net/'}]
-

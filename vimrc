@@ -1,7 +1,10 @@
 filetype off
 
+"set backupdir=$HOME/.vimswap
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIMRUNTIME
+  source $HOME/.vim/dbext_profiles
+  set backupdir=c:\temp
 endif
 
 call pathogen#helptags()
@@ -16,7 +19,7 @@ set autoindent
 set expandtab
 syntax on
 
-colorscheme solarized
+colorscheme vividchalk
 set background=dark
 set listchars=tab:>-,trail:-
 set guifont=Consolas:h14:cANSI

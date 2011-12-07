@@ -17,6 +17,7 @@ set smarttab
 set shiftwidth=2
 set autoindent
 set expandtab
+set clipboard=unnamed
 syntax on
 
 colorscheme vividchalk
